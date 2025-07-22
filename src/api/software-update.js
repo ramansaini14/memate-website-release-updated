@@ -23,7 +23,7 @@ export const updateList = async () => {
 
 export const updateListLatest = async () => {
     const myHeaders = new Headers();
-    myHeaders.append("X-Update-Api-Key", "3fa85f64d51b6c8e74313f7c69aef82U");
+    myHeaders.append("X-Api-Key", "3fa85f64d51b6c8e74313f7c69aef82d");
   
     const requestOptions = {
       method: "GET",
@@ -34,11 +34,12 @@ export const updateListLatest = async () => {
     try {
       const response = await fetch("https://admin.memate.com.au/api/get-latest-five-update", requestOptions);
       const result = await response.json(); 
-      return result;
+      console.log("API RESPONSE updateListLatest -- ", result);
+      return Array.isArray(result.data) ? result.data : (Array.isArray(result) ? result : []);
   
-    } catch {
-      
-      
+    } catch (error) {
+      console.error("Error fetching software updates:", error);
+      return [];
     }
   };
 
