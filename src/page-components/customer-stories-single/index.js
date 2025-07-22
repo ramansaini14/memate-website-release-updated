@@ -7,10 +7,19 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import BoatWizard from "../../components/customer-stories-single/boat-wizard";
 import SortedMedia from "../../components/customer-stories-single/sorted-media";
+import { notFound } from "next/navigation";
 
 const CustomerStoriesPageSingle = ({ params }) => {
   const pathname = usePathname();
   const slug = params?.slug;
+  
+  // Define valid slugs
+  const validSlugs = ['camera-fix', 'pro-vinyl', 'elite-life', 'boat-wizard', 'sorted-media'];
+  
+  // Check if slug is valid, if not redirect to 404
+  if (slug && !validSlugs.includes(slug)) {
+    notFound();
+  }
   
   return (
     <Layout>
