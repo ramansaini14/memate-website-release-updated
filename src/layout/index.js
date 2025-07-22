@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import "./style.css";
+import "../App.css";
 import NextStep from "../components/next-step";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
