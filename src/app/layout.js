@@ -3,6 +3,7 @@ import "../index.css";
 import "../prime.css";
 import "../global.scss";
 import "../App.css";
+import "aos/dist/aos.css";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { Providers } from '../providers';
 

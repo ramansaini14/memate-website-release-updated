@@ -68,6 +68,12 @@ const Layout = ({ children }) => {
       if(document.readyState === 'complete' && ScrollTrigger) {
         try {
           ScrollTrigger.refresh();
+          
+          // Also refresh AOS to ensure animations work properly
+          if (typeof window !== 'undefined' && window.AOS) {
+            window.AOS.refresh();
+          }
+          
           refreshCount++;
           
           if (refreshCount >= MAX_REFRESHES) {
