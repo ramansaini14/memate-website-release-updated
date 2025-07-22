@@ -13,7 +13,15 @@ gsap.registerPlugin(ScrollTrigger);
 export default function AppWrapper({ children }) {
   // Initialize AOS
   useEffect(() => {
-    AOS.init();
+    if (typeof window !== 'undefined') {
+      AOS.init({
+        duration: 1000,
+        easing: 'ease-in-out',
+        once: false,
+        mirror: true,
+        offset: 50
+      });
+    }
   }, []);
 
   const pathname = usePathname();
@@ -163,14 +171,15 @@ export default function AppWrapper({ children }) {
           setTotalPosts(total);
           
           setPosts((prevPosts) => {
-            if (currentPage === 1) {
-              return data || [];
-            } else {
-              const uniquePosts = data?.filter(
-                (newPost) => !prevPosts.some((post) => post.id === newPost.id)
-              );
-              return [...prevPosts, ...uniquePosts];
-            }
+            const newPosts = currentPage === 1 
+              ? data || [] 
+              : [...prevPosts, ...(data?.filter(
+                  (newPost) => !prevPosts.some((post) => post.id === newPost.id)
+                ) || [])];
+            
+            // Refresh AOS after content changes
+            setTimeout(() => AOS.refresh(), 100);
+            return newPosts;
           });
         } else {
           // Original logic for "All" category (activeCategory === 0)
@@ -182,7 +191,11 @@ export default function AppWrapper({ children }) {
             const uniquePosts = data?.filter(
               (newPost) => !prevPosts.some((post) => post.id === newPost.id)
             );
-            return [...prevPosts, ...uniquePosts];
+            const newPosts = [...prevPosts, ...uniquePosts];
+            
+            // Refresh AOS after content changes
+            setTimeout(() => AOS.refresh(), 100);
+            return newPosts;
           });
         }
       } catch (error) {
