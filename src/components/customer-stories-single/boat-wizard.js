@@ -63,23 +63,23 @@ const article =  {
         <div className="parent-blog">
           <div className="pageBreadcrumbs">
             <ul>
-              <li><a href="/">Home</a></li>/<li> <Link className="MainPageLink" href="/customer-stories"> Customer Stories</Link></li>/<li> <Link>Boat Wizard</Link></li>
+              <li><a href="/">Home</a></li>/<li> <Link className="MainPageLink" href="/customer-stories"> Customer Stories</Link></li>/<li> <Link href="/customer-stories/boat-wizard">Boat Wizard</Link></li>
             </ul>
             <Link href="/customer-stories" className="backButStories"><img src={arrowIconBack} alt="Arrow" /> Back</Link>
           </div>
           <div className="customerstoriesGrid">
             <h1>How Boat Wizard Perform Their Marine Service Business with MeMate</h1>
             <div className="innerGrid imageOverlyText">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={BoatWizard01}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
               <div className="customerstoriesDetails">
                 <div>
                   <div className="category">Boat Wizard</div>
-                  <div className="date-heading-title"><Link>We quote and invoice all our marine engineering services.</Link></div>
-                  <Link className="readMoreBut">Read More</Link>
+                  <div className="date-heading-title"><span>We quote and invoice all our marine engineering services.</span></div>
+                  <Link href="/customer-stories/boat-wizard" className="readMoreBut">Read More</Link>
                 </div>
               </div>
             </div>
@@ -89,11 +89,11 @@ const article =  {
            
 
             <div className="innerGrid innerGridwrapper">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={BoatWizard02}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -107,11 +107,11 @@ const article =  {
 
 
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={BoatWizard03}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -125,11 +125,11 @@ const article =  {
 
 
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={BoatWizard04}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -142,11 +142,11 @@ const article =  {
 
 
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={BoatWizard05}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
             </div>
             <div className="wrapperText">
               <h3>The team at meMate has done a fantastic job in developing this software. </h3>

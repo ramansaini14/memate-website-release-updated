@@ -68,16 +68,16 @@ const article =  {
           <div className="customerstoriesGrid">
             <h1>How Sorted Media Runs Their Photography & Video Agency with MeMate</h1>
             <div className="innerGrid imageOverlyText">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={SortedMedia01}
                 alt="Blog featured "
-              /></Link>
+              /></div>
               <div className="customerstoriesDetails">
                 <div>
                   <div className="category">Sorted Media</div>
-                  <div className="date-heading-title"><Link>Photography and Videography on Demand</Link></div>
-                  <Link className="readMoreBut">Read More</Link>
+                  <div className="date-heading-title"><span>Photography and Videography on Demand</span></div>
+                  <Link href="/customer-stories/sorted-media" className="readMoreBut">Read More</Link>
                 </div>
               </div>
             </div>
@@ -87,11 +87,11 @@ const article =  {
            
 
             <div className="innerGrid innerGridwrapper">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={SortedMedia02}
                 alt="Blog featured "
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -110,11 +110,11 @@ const article =  {
 
 
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={SortedMedia03}
                 alt="Blog featured "
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -127,11 +127,11 @@ const article =  {
 
 
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={SortedMedia04}
                 alt="Blog featured "
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -140,11 +140,11 @@ const article =  {
             <p>As we continue to grow and scale our operations, meMate’s ability to adapt to our needs has been invaluable. Whether it’s managing a growing team or dealing with increasing demand, meMate consistently proves to be a flexible and scalable solution that evolves with us. Its customisation options have allowed us to tailor the system to our unique workflows, ensuring that we can continue to deliver the high-quality service our clients expect.</p>
             </div>
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={SortedMedia05}
                 alt="Blog featured "
-              /></Link>
+              /></div>
             </div>
             <div className="wrapperText">
               <p>Looking ahead, we believe that meMate will be key in helping us maintain our competitive edge in the photography and videography industry. By streamlining processes, reducing human error, and improving overall efficiency, meMate allows us to focus on what we do best—creating unforgettable visual content for our clients. We are excited to see how meMate can support our future growth and success.</p>

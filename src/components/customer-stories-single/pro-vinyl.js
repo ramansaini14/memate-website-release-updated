@@ -70,23 +70,23 @@ const article =  {
         <div className="parent-blog">
           <div className="pageBreadcrumbs">
             <ul>
-              <li><a href="/">Home</a></li>/<li> <Link className="MainPageLink" href="/customer-stories"> Customer Stories</Link></li>/<li> <Link>PRO vinyl</Link></li>
+              <li><a href="/">Home</a></li>/<li> <Link className="MainPageLink" href="/customer-stories"> Customer Stories</Link></li>/<li> <Link href="/customer-stories/pro-vinyl">PRO vinyl</Link></li>
             </ul>
             <Link href="/customer-stories" className="backButStories"><img src={arrowIconBack} alt="Arrow" /> Back</Link>
           </div>
           <div className="customerstoriesGrid">
             <h1>How Pro Vinyl Enhanced Their Automotive Wrap Business with MeMate</h1>
             <div className="innerGrid imageOverlyText">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={customersoriesProImage}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
               <div className="customerstoriesDetails">
                 <div>
                   <div className="category">PROvinyl</div>
-                  <div className="date-heading-title"><Link>Running a Car Wrapping Company on meMate</Link></div>
-                  <Link className="readMoreBut">Read More</Link>
+                  <div className="date-heading-title"><span>Running a Car Wrapping Company on meMate</span></div>
+                  <Link href="/customer-stories/pro-vinyl" className="readMoreBut">Read More</Link>
                 </div>
               </div>
             </div>
@@ -105,11 +105,11 @@ const article =  {
 
 
             <div className="innerGrid innerGridwrapper">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={ProVinyl01}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -127,11 +127,11 @@ const article =  {
 
 
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={ProVinyl02}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -146,11 +146,11 @@ const article =  {
 
 
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={ProVinyl03}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -160,11 +160,11 @@ const article =  {
 
 
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={ProVinyl04}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -180,11 +180,11 @@ const article =  {
 
             
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={ProVinyl05}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
 
             </div>
             <div className="wrapperText">
@@ -193,11 +193,11 @@ const article =  {
             </div>
 
             <div className="innerGrid">
-              <Link ><img
+              <div><img
                 className="img-container-stories"
                 src={ProVinyl06}
                 alt="Blog featured image"
-              /></Link>
+              /></div>
 
             </div>
             <div className="gadientText2 gadientText2M">

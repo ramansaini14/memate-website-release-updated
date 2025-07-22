@@ -8,18 +8,20 @@ import { usePathname } from "next/navigation";
 import BoatWizard from "../../components/customer-stories-single/boat-wizard";
 import SortedMedia from "../../components/customer-stories-single/sorted-media";
 
-const CustomerStoriesPageSingle = () => {
+const CustomerStoriesPageSingle = ({ params }) => {
   const pathname = usePathname();
+  const slug = params?.slug;
+  
   return (
     <Layout>
       <div className="bgshadowwrapper">
-        {pathname === "/customer-stories/camera-fix" && <CameraFix />}
-        {pathname === "/customer-stories/pro-vinyl" && <ProVinyl />}
-        {pathname === "/customer-stories/elite-life" && <EliteLife />}
-        {pathname === "/customer-stories/boat-wizard" && (
+        {(pathname === "/customer-stories/camera-fix" || slug === "camera-fix") && <CameraFix />}
+        {(pathname === "/customer-stories/pro-vinyl" || slug === "pro-vinyl") && <ProVinyl />}
+        {(pathname === "/customer-stories/elite-life" || slug === "elite-life") && <EliteLife />}
+        {(pathname === "/customer-stories/boat-wizard" || slug === "boat-wizard") && (
           <BoatWizard />
         )}
-        {pathname === "/customer-stories/sorted-media" && (
+        {(pathname === "/customer-stories/sorted-media" || slug === "sorted-media") && (
           <SortedMedia />
         )}
       </div>
