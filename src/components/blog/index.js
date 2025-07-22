@@ -37,7 +37,7 @@ function Blog({ PostsCategories, activeCategory, handleTabClick, posts, totalPos
   };
   const filteredPosts = activeCategory === 0
     ? []
-    : posts.filter(post => post.category.id === activeCategory);
+    : posts; // AppWrapper now handles the filtering correctly
 
     const latestPost = postsLatest?.[0];
     const article = latestPost ? {

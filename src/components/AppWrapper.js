@@ -99,16 +99,73 @@ export default function AppWrapper({ children }) {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const response = await blogList(currentPage, limit, activeCategory);
-        const { data, total } = response;
-        if (!data) throw new Error("No data found");
-        setTotalPosts(total);
-        setPosts((prevPosts) => {
-          const uniquePosts = data?.filter(
-            (newPost) => !prevPosts.some((post) => post.id === newPost.id)
-          );
-          return [...prevPosts, ...uniquePosts];
-        });
+        // Handle special case for category filtering bug
+        if (activeCategory !== 0) {
+          // For specific categories, implement smart fetching to handle API pagination bug
+          const fetchCategoryPosts = async () => {
+            let collectedPosts = [];
+            let page = currentPage;
+            let totalFound = 0;
+            const maxPages = 10; // Safety limit to prevent infinite loops
+            let searchPage = 1; // Start searching from page 1
+            
+            // Search through pages to find posts for the specific category
+            while (collectedPosts.length < limit && searchPage <= maxPages) {
+              const response = await blogList(searchPage, limit * 3, activeCategory); // Fetch more to increase chances
+              const { data, total } = response;
+              
+              if (!data || data.length === 0) break;
+              
+              // Filter posts that actually belong to the selected category
+              const correctCategoryPosts = data.filter(post => post.category.id === activeCategory);
+              
+              // Add unique posts
+              correctCategoryPosts.forEach(post => {
+                if (!collectedPosts.some(existing => existing.id === post.id) && collectedPosts.length < limit) {
+                  collectedPosts.push(post);
+                }
+              });
+              
+              totalFound = total;
+              
+              // If we found enough posts or no more posts available, break
+              if (collectedPosts.length >= limit || correctCategoryPosts.length === 0) break;
+              
+              searchPage++;
+            }
+            
+            return {
+              data: collectedPosts,
+              total: totalFound
+            };
+          };
+          
+          const { data, total } = await fetchCategoryPosts();
+          setTotalPosts(total);
+          
+          setPosts((prevPosts) => {
+            if (currentPage === 1) {
+              return data || [];
+            } else {
+              const uniquePosts = data?.filter(
+                (newPost) => !prevPosts.some((post) => post.id === newPost.id)
+              );
+              return [...prevPosts, ...uniquePosts];
+            }
+          });
+        } else {
+          // Original logic for "All" category (activeCategory === 0)
+          const response = await blogList(currentPage, limit, activeCategory);
+          const { data, total } = response;
+          if (!data) throw new Error("No data found");
+          setTotalPosts(total);
+          setPosts((prevPosts) => {
+            const uniquePosts = data?.filter(
+              (newPost) => !prevPosts.some((post) => post.id === newPost.id)
+            );
+            return [...prevPosts, ...uniquePosts];
+          });
+        }
       } catch (error) {
         setError(error);
         console.error("Error fetching blog posts:", error);
