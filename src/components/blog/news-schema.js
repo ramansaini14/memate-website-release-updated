@@ -31,9 +31,11 @@ const NewsSchema = ({ article, breadcrumbList }) => {
     : [newsArticleSchema];
 
   return (
-    <script type="application/ld+json">
-      {JSON.stringify(structuredData)}
-    </script>
+    <div className="structured-data-wrapper" style={{ display: 'none' }}>
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
+    </div>
   );
 };
 
