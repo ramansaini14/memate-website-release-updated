@@ -23,7 +23,7 @@ export const updateList = async () => {
 
 export const updateListLatest = async () => {
     const myHeaders = new Headers();
-    myHeaders.append("X-Api-Key", "3fa85f64d51b6c8e74313f7c69aef82d");
+    myHeaders.append("X-Update-Api-Key", "3fa85f64d51b6c8e74313f7c69aef82U");
   
     const requestOptions = {
       method: "GET",

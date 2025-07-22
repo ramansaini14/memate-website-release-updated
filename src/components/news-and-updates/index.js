@@ -10,15 +10,13 @@ const NewsAndUpdate = ({ postsLatest }) => {
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    // Mark component as hydrated to prevent mismatch
     setIsHydrated(true);
     
-    // Fetch software updates
     const fetchUpdates = async () => {
       try {
         const updates = await updateListLatest();
         if (updates && Array.isArray(updates)) {
-          setUpdateData(updates.slice(0, 5)); // Get latest 5 updates
+          setUpdateData(updates.slice(0, 5)); 
         }
       } catch (error) {
         console.error('Error fetching updates:', error);
@@ -160,19 +158,6 @@ const NewsAndUpdate = ({ postsLatest }) => {
                          update.created_at ? formatDate(update.created_at) : 
                          'Recent Update'}
                       </span>
-                      {update.description && (
-                        <p style={{
-                          color: '#666',
-                          fontSize: '14px',
-                          marginTop: '8px',
-                          lineHeight: '1.4'
-                        }}>
-                          {update.description.length > 100 
-                            ? `${update.description.substring(0, 100)}...` 
-                            : update.description
-                          }
-                        </p>
-                      )}
                     </li>
                   )) : (
                     <li>

@@ -6,9 +6,8 @@ export function middleware(request) {
   const queryString = url.search;
   const pathWithQuery = pathname + queryString;
 
-  // Define all redirect mappings
+// 301 redirects
   const redirects = {
-    // Basic redirects
     '/what-is-memate': '/about',
     '/data-single': '/supplier-database',
     '/data-single/memate-enterprise-pty-limited': '/supplier-database',

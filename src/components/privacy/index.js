@@ -9,6 +9,7 @@ import MiddleSection from "./privacy-middle-section";
 import style from './privacy-module.module.scss';
 import NewsSchema from "../blog/news-schema";
 const arrowIconBack = "https://memate-website.s3.ap-southeast-2.amazonaws.com/assets/arrowIconBack.svg";
+// import '../App.css'
 
 const PrivacyComponent = () => {
  const breadcrumbList = {
