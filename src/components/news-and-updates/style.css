@@ -2,6 +2,12 @@
   width: 100%;
   overflow: hidden;
 }
+
+.slider-section-container {
+  width: 100%;
+  padding: 80px 0;
+  background: #f8f9fa;
+}
 .sliderSectionShadowl{
   background: url(https://memate-website.s3.ap-southeast-2.amazonaws.com/assets/newsshadow.png) no-repeat;
   background-size: contain;   
@@ -162,40 +168,51 @@
   font-family: 'sequel_sans_roman_head';
 }
 @media screen and (max-width: 767px) {
+  .section-header h2 {
+    font-size: 28px !important;
+  }
+  .section-header p {
+    font-size: 16px !important;
+    padding: 0 20px;
+  }
   .NewsflexWrap .itemHead {
     margin-bottom: 15px;
     margin-top: 0;
-}
-.bottom-managementw {
+  }
+  .bottom-managementw {
     margin-top: 50px !important;
-}
-.NewsflexWrap .textBox .postH2Title, .NewsflexWrap .textBox a, .bottom-management p {
-  font-size: 17px;
-}
-.NewsflexWrap {
+  }
+  .NewsflexWrap .textBox .postH2Title, .NewsflexWrap .textBox a, .bottom-management p {
+    font-size: 17px;
+  }
+  .NewsflexWrap {
     grid-template-columns: 1fr;
     gap: 0;
     width: 100%;
     text-align: center;
     margin-top: 72px;
-}
-.NewsflexWrap .Newsitem .imgBox {
-  width: 100%;
-}
-.NewsflexWrap .Newsitem li {
-  grid-template-columns: 1fr;
-  gap: 15px;;
-  margin-bottom: 20px;
-}
-.NewsflexWrap .itemHead span {
-  font-size: 24px;
-}
-.softwareWrp li h3 {
-  font-size: 18px;
-}
-.softwareWrp li {
-  margin-bottom: 20px;
-}
+    padding: 0 20px;
+  }
+  .NewsflexWrap .Newsitem .imgBox {
+    width: 100%;
+  }
+  .NewsflexWrap .Newsitem li {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .NewsflexWrap .itemHead span {
+    font-size: 24px;
+  }
+  .softwareWrp li h3 {
+    font-size: 18px;
+  }
+  .softwareWrp li {
+    margin-bottom: 20px;
+  }
+  .success-stories-section {
+    padding: 0 20px;
+  }
 }
 @media screen and (max-width: 992px) and (min-width: 768px){
   .NewsflexWrap {
