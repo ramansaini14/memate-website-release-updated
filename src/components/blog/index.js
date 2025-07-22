@@ -8,15 +8,22 @@ import NewsSchema from "./news-schema";
 
 function Blog({ PostsCategories, activeCategory, handleTabClick, posts, totalPosts, loading, postsLatest, handleNext }) {
   // Safety checks for data availability
-  if (!postsLatest || !Array.isArray(postsLatest)) {
+  if (!postsLatest || !Array.isArray(postsLatest) || !PostsCategories || !Array.isArray(PostsCategories)) {
     return <div>Loading blog content...</div>;
   }
 
   const formatDateWithOrdinal = (dateString) => {
     try {
+      // Ensure consistent date parsing across server and client
       const date = new Date(dateString.replace(/(\d+)(st|nd|rd|th)/, '$1'));
+      
+      // Check if date is valid
+      if (isNaN(date.getTime())) {
+        return dateString;
+      }
+      
       const day = date.getDate();
-      const month = date.toLocaleString('en-US', { month: 'long' });
+      const month = date.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' });
       const year = date.getFullYear();
 
       const ordinalSuffix = (n) => {
@@ -98,8 +105,6 @@ function Blog({ PostsCategories, activeCategory, handleTabClick, posts, totalPos
             </div>
             {filteredPosts.length !== 0 ?
             <>
-                    {filteredPosts.length > 5 ? 
-                    <>
                     <div className="categories">
                       {filteredPosts?.map((post) => (
                         <div key={post.id} className="img-container-3-div "  data-aos="fade-up"
@@ -127,43 +132,11 @@ function Blog({ PostsCategories, activeCategory, handleTabClick, posts, totalPos
                           </div>
                         </div>
                       ))}
-                      <div className="nextbtn-container-A">
-                          {totalPosts > posts?.length && <button onClick={handleNext} className="next-page-btn-A">{loading ? "Loading..." : "Next page"}</button>}
-                      </div>
                     </div>
-                    </> :
-                      <>
-                      <div className="categories">
-                        {filteredPosts?.map((post) => (
-                          <div key={post.id} className="img-container-3-div"  data-aos="fade-up"
-                          data-aos-offset="50"
-                          data-aos-delay="50"
-                          data-aos-duration="2500"
-                          data-aos-mirror="true"
-                          data-aos-once="false"
-                          data-aos-anchor-placement="top-bottom">
-                            <div className="img-container-3-img1-div" style={{ marginBottom: "0.5rem" }}>
-                              <Link href={`/news/${post.slug}`} aria-label="Read more about 'There Are No Unicorns — Just Direction and Determination'">
-                                <img
-                                  className="img-container-3-img-1"
-                                  src={post.featured_img_url || Images.blogImgempty}
-                                  alt={post.title}
-                                />
-                              </Link>
-                              <div className="img-heading-container">
-                                <div className="date-A">{formatDateWithOrdinal(post.publish_date)} | {post.author}</div>
-                                <div className="date-heading-mainb"><Link href={`/news/${post.slug}`}>{post.title}</Link></div>
-                              </div>
-                              <div className='postCategory'>
-                                <Link href={`/news/category/${post.category.id}`} aria-label="Read more about 'There Are No Unicorns — Just Direction and Determination'">{post.category.title}</Link>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      </>
-                      }
-                      </>
+                    <div className="nextbtn-container-A">
+                        {totalPosts > filteredPosts?.length && <button onClick={handleNext} className="next-page-btn-A">{loading ? "Loading..." : "Load More"}</button>}
+                    </div>
+                    </>
                       : (activeCategory !==0) ? ((loading)? <div style={{display: "flex", justifyContent: 'center',  height: "300px", alignItems: 'center'}}><p>Loading...</p></div> : <div style={{ display: 'flex', justifyContent: 'center',  height: "300px", alignItems: 'center'}}><p>No Posts</p></div> ) : ""
                        }
           </div>

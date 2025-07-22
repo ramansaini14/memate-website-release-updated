@@ -18,18 +18,8 @@ export default function AppWrapper({ children }) {
 
   const pathname = usePathname();
 
-  // Blog state management
-  let savedlatestPostData = [];
-  try {
-    if (typeof window !== 'undefined') {
-      savedlatestPostData = JSON.parse(sessionStorage.getItem('latestPostData') || "[]");
-    }
-  } catch (error) {
-    console.error('Error parsing latestPostData from sessionStorage:', error);
-    savedlatestPostData = [];
-  }
-
-  const [postsLatest, setPostsLatest] = useState(savedlatestPostData || []);
+  // Blog state management - Initialize with empty array to prevent hydration mismatch
+  const [postsLatest, setPostsLatest] = useState([]);
   const [PostsCategories, setPostsCategories] = useState();
   const [posts, setPosts] = useState([]);
   const [activeCategory, setActiveCategory] = useState(0);
@@ -52,8 +42,23 @@ export default function AppWrapper({ children }) {
     }
   }, [pathname]);
 
-  // Fetch latest posts
+  // Load saved data and fetch latest posts
   useEffect(() => {
+    // First, try to load from sessionStorage
+    let savedlatestPostData = [];
+    try {
+      if (typeof window !== 'undefined') {
+        savedlatestPostData = JSON.parse(sessionStorage.getItem('latestPostData') || "[]");
+        if (savedlatestPostData?.length > 0) {
+          setPostsLatest(savedlatestPostData);
+          return; // Don't fetch if we have cached data
+        }
+      }
+    } catch (error) {
+      console.error('Error parsing latestPostData from sessionStorage:', error);
+    }
+
+    // Fetch latest posts if no cached data
     const fetchDataLatest = async () => {
       try {
         const dataLatest = await blogLatest();
@@ -66,11 +71,25 @@ export default function AppWrapper({ children }) {
       }
     };
 
-    if (!postsLatest?.length) fetchDataLatest();
-  }, [postsLatest?.length]);
+    fetchDataLatest();
+  }, []); // Remove dependency to run only once
 
   // Fetch categories
   useEffect(() => {
+    // First, try to load from sessionStorage
+    let savedCatData = [];
+    try {
+      if (typeof window !== 'undefined') {
+        savedCatData = JSON.parse(sessionStorage.getItem('latestCat') || "[]");
+        if (savedCatData?.length > 0) {
+          setPostsCategories(savedCatData);
+          return; // Don't fetch if we have cached data
+        }
+      }
+    } catch (error) {
+      console.error('Error parsing latestCat from sessionStorage:', error);
+    }
+
     const fetchCateLatest = async () => {
       try {
         const dataCat = await getCategories();
@@ -79,12 +98,12 @@ export default function AppWrapper({ children }) {
         }
         setPostsCategories(dataCat);
       } catch (err) {
-        console.log('Error during getting the latest post:', err);
+        console.log('Error during getting the categories:', err);
       }
     };
 
-    if (!PostsCategories?.length) fetchCateLatest();
-  }, [PostsCategories?.length]);
+    fetchCateLatest();
+  }, []); // Remove dependency to run only once
 
   const handleTabClick = (categoryId) => {
     if (activeCategory !== categoryId) {
