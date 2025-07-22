@@ -93,7 +93,7 @@ function CameraFix() {
               /
               <li>
                 {" "}
-                <Link>Camera Fix</Link>
+                <Link href="/customer-stories/camera-fix">Camera Fix</Link>
               </li>
             </ul>
             <Link href="/customer-stories" className="backButStories">
@@ -104,23 +104,23 @@ function CameraFix() {
           <div className="customerstoriesGrid">
             <h1>How Camera Fix Runs Their Repair Business with MeMate</h1>
             <div className="innerGrid imageOverlyText">
-              <Link>
+              <div>
                 <img
                   className="img-container-stories"
                   src={CustomerStoriesImage}
                   alt="Camera Fix"
                 />
-              </Link>
+              </div>
               <div className="customerstoriesDetails">
                 <div>
                   <div className="category">Camera Fix</div>
                   <div className="date-heading-title">
-                    <Link>
+                    <span>
                       Empowering a Boutique Camera Repair Shop to Manage
                       Business and Serve Over 100 Clients Monthly
-                    </Link>
+                    </span>
                   </div>
-                  <Link className="readMoreBut">Read More</Link>
+                  <Link href="/customer-stories/camera-fix" className="readMoreBut">Read More</Link>
                 </div>
               </div>
             </div>
@@ -159,13 +159,13 @@ function CameraFix() {
             </div>
 
             <div className="innerGrid innerGridwrapper">
-              <Link>
+              <div>
                 <img
                   className="img-container-stories"
                   src={customersories01}
                   alt="Camera Fix"
                 />
-              </Link>
+              </div>
             </div>
             <div className="wrapperText">
               <h3>Transforming Day-to-Day Operations</h3>
@@ -193,13 +193,13 @@ function CameraFix() {
             </div>
 
             <div className="innerGrid">
-              <Link>
+              <div>
                 <img
                   className="img-container-stories"
                   src={imagescustomersories02}
                   alt="Camera Fix"
                 />
-              </Link>
+              </div>
             </div>
             <div className="wrapperText">
               <h3>Comprehensive Business Management</h3>
@@ -225,13 +225,13 @@ function CameraFix() {
             </div>
 
             <div className="innerGrid">
-              <Link>
+              <div>
                 <img
                   className="img-container-stories"
                   src={imagescustomersories03}
                   alt="Camera Fix"
                 />
-              </Link>
+              </div>
             </div>
             <div className="wrapperText">
               <h3>Supporting a Small Team with Big Responsibilities</h3>
@@ -256,13 +256,13 @@ function CameraFix() {
             </div>
 
             <div className="innerGrid">
-              <Link>
+              <div>
                 <img
                   className="img-container-stories"
                   src={imagescustomersories04}
                   alt="Camera Fix"
                 />
-              </Link>
+              </div>
             </div>
             <div className="gadientText">
               <h2 className="gameChangerText">
