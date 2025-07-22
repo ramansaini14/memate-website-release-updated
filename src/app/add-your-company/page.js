@@ -1,9 +1,13 @@
+'use client';
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import AppWrapper from '../../components/AppWrapper';
+import './styles.css';
 
 export default function AddYourCompany() {
     return (
-        <>
+        <AppWrapper>
             <Helmet>
                 <title>Add Your Company to Supplier Database | Memate</title>
                 <meta name="description" content="Join Memate's supplier database and connect with businesses looking for your services. Expand your reach and grow your business." />
@@ -74,6 +78,6 @@ export default function AddYourCompany() {
                     </div>
                 </div>
             </div>
-        </>
+        </AppWrapper>
     );
 }
